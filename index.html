@@ -3,388 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="EliteFit — Treino personalizado e nutrição esportiva com FBueno Coach e Isabel Peixinho. Hipertrofia, emagrecimento e resultados reais.">
+<meta name="description" content="EliteFit — Treino personalizado e nutrição esportiva com FBueno Coach e Isabel Peixinho.">
 <title>EliteFit — Fitness Trainer & Nutrition</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --gold:#C9A84C;--gold2:#B8962E;--gold-light:#F5E9C8;
+  --bg:#FAFAF8;--white:#FFFFFF;--card:#F4F2ED;
+  --dark:#1A1A1A;--grafite:#3A3A3A;--muted:#888;
+  --border:#E8E4DA;--border2:rgba(201,168,76,0.25);
+  --text:#2A2A2A;--text2:#666;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--gold)}
 
-  :root {
-    --gold:    #C9A84C;
-    --gold2:   #DDB95E;
-    --black:   #181818;
-    --grafite: #232323;
-    --card:    #2C2C2C;
-    --border:  rgba(201,168,76,0.18);
-    --white:   #F0ECE2;
-    --muted:   #999999;
-    --text:    #E0DCD2;
-  }
+/* NAV */
+nav{display:flex;justify-content:space-between;align-items:center;padding:.9rem 3rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(250,250,248,0.97);backdrop-filter:blur(12px);z-index:100}
+.nav-logo{height:38px;width:auto;display:block}
+.logo-link{display:flex;align-items:center;text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--text2);text-decoration:none;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold2)}
+.nav-cta{background:var(--dark);color:#fff;padding:.5rem 1.4rem;border:none;font-family:'Barlow',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .3s}
+.nav-cta:hover{background:var(--gold2)}
+.nav-toggle{display:none;background:none;border:none;cursor:pointer;padding:.2rem}
+.nav-toggle span{display:block;width:22px;height:1.5px;background:var(--dark);margin:5px 0;transition:all .3s}
 
-  html { scroll-behavior: smooth; }
-  body {
-    background: var(--black);
-    color: var(--text);
-    font-family: 'Barlow', sans-serif;
-    line-height: 1.6;
-    overflow-x: hidden;
-  }
+/* BUTTONS */
+.btn-dark{background:var(--dark);color:#fff;padding:.75rem 1.8rem;border:none;font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .3s;display:inline-block;text-decoration:none}
+.btn-dark:hover{background:var(--gold2);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--dark);padding:.75rem 1.8rem;border:1.5px solid var(--border);font-family:'Barlow',sans-serif;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .3s;display:inline-block;text-decoration:none}
+.btn-outline:hover{border-color:var(--gold2);color:var(--gold2)}
+.btn-plan{display:block;margin-top:.9rem;text-align:center;padding:.6rem 1rem;background:var(--card);color:var(--grafite);border:1.5px solid var(--border);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:all .3s;font-family:'Barlow',sans-serif;font-weight:600;width:100%}
+.btn-plan:hover,.plan.feat .btn-plan{background:var(--dark);color:#fff;border-color:var(--dark)}
 
-  /* ── LOGO IMG ── */
-  .nav-logo { height: 36px; width: auto; display: block; }
-  .logo-img-link { display: flex; align-items: center; text-decoration: none; }
+/* GOLD ACCENT LINE */
+.gold-bar{height:2px;background:linear-gradient(90deg,transparent,var(--gold) 25%,var(--gold) 75%,transparent)}
 
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 4px; }
-  ::-webkit-scrollbar-track { background: var(--black); }
-  ::-webkit-scrollbar-thumb { background: var(--gold); }
+/* HERO */
+.hero{min-height:86vh;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:3rem;padding:3.5rem 3rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;right:-100px;top:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(201,168,76,.07) 0%,transparent 65%);pointer-events:none}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;margin-bottom:.8rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold2)}
+.hero-tag::before{content:'';display:inline-block;width:20px;height:1.5px;background:var(--gold)}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(3rem,6vw,5.2rem);font-weight:800;text-transform:uppercase;line-height:1.02;margin-bottom:1rem;color:var(--dark)}
+.hero h1 .gold{color:var(--gold)}
+.hero h1 .dim{color:var(--muted)}
+.hero-desc{color:var(--text2);font-size:.9rem;line-height:1.85;max-width:440px;margin-bottom:1.8rem;font-weight:300}
+.hero-btns{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero-right{display:flex;flex-direction:column;gap:.8rem}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border)}
+.stat-box{background:var(--white);padding:1.4rem;text-align:center;border:1px solid var(--border)}
+.stat-n{font-family:'Barlow Condensed',sans-serif;font-size:2.6rem;font-weight:800;color:var(--gold);line-height:1;display:block}
+.stat-l{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:.15rem;display:block}
+.pill{display:flex;align-items:center;gap:.8rem;padding:.7rem 1rem;border:1px solid var(--border);background:var(--white)}
+.pill-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.pill-text{font-size:.78rem;color:var(--text2);font-weight:300}
+.pill-text strong{color:var(--dark);font-weight:600;display:block;font-size:.8rem}
 
-  /* ── NAV ── */
-  nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1rem 3rem;
-    border-bottom: 1px solid var(--border);
-    position: sticky; top: 0;
-    background: rgba(24,24,24,0.96);
-    backdrop-filter: blur(12px);
-    z-index: 100;
-  }
-  .logo {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.6rem; font-weight: 800;
-    letter-spacing: .08em; text-transform: uppercase;
-    color: var(--white); text-decoration: none;
-  }
-  .logo span { color: var(--gold); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a {
-    color: var(--muted); text-decoration: none;
-    font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
-    transition: color .3s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--gold); color: #111;
-    padding: .5rem 1.4rem; border: none;
-    font-family: 'Barlow', sans-serif; font-size: .75rem;
-    font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-    cursor: pointer; transition: background .3s;
-  }
-  .nav-cta:hover { background: var(--gold2); }
-  .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
-  .nav-toggle span {
-    display: block; width: 22px; height: 1.5px;
-    background: var(--white); margin: 5px 0; transition: all .3s;
-  }
+/* SECTIONS */
+.sec{padding:3.5rem 3rem}
+.sec.alt{background:var(--card)}
+.sec-tag{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold2);margin-bottom:.35rem}
+.sec-h{font-family:'Barlow Condensed',sans-serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:800;text-transform:uppercase;color:var(--dark);line-height:1.05;margin-bottom:2rem}
+.sec-h .dim{color:var(--muted);font-weight:700}
 
-  /* ── HERO ── */
-  .hero {
-    min-height: 88vh;
-    display: grid; grid-template-columns: 1.1fr .9fr;
-    align-items: center; gap: 3rem;
-    padding: 3.5rem 3rem;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: .5rem;
-    margin-bottom: .8rem; font-size: .68rem;
-    letter-spacing: .2em; text-transform: uppercase; color: var(--gold);
-  }
-  .hero-tag::before {
-    content: ''; display: inline-block;
-    width: 20px; height: 1px; background: var(--gold);
-  }
-  .hero h1 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(3rem, 6vw, 5.2rem);
-    font-weight: 800; text-transform: uppercase;
-    line-height: 1.02; margin-bottom: 1rem;
-  }
-  .hero h1 .w1 { color: var(--white); display: block; }
-  .hero h1 .w2 { color: var(--gold); display: block; }
-  .hero h1 .w3 { color: var(--muted); display: block; font-weight: 700; }
-  .hero-desc {
-    color: var(--muted); font-size: .9rem; line-height: 1.85;
-    max-width: 440px; margin-bottom: 1.8rem; font-weight: 300;
-  }
-  .hero-btns { display: flex; gap: .8rem; flex-wrap: wrap; }
+/* PLANS */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border)}
+.plan{background:var(--white);padding:1.8rem 1.5rem;transition:background .3s;border:1px solid var(--border)}
+.plan:hover,.plan.feat{background:var(--dark)}
+.plan:hover .plan-name,.plan.feat .plan-name,
+.plan:hover .plan-desc,.plan.feat .plan-desc,
+.plan:hover .plan-items li,.plan.feat .plan-items li,
+.plan:hover .plan-badge,.plan.feat .plan-badge{color:#fff}
+.plan:hover .plan-price,.plan.feat .plan-price{color:var(--gold)}
+.plan:hover .plan-items li,.plan.feat .plan-items li{border-bottom-color:rgba(255,255,255,0.1)}
+.plan.feat{border-top:3px solid var(--gold)}
+.plan-badge{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:.7rem;display:block;transition:color .3s}
+.plan-name{font-family:'Barlow Condensed',sans-serif;font-size:1.6rem;font-weight:800;text-transform:uppercase;color:var(--dark);margin-bottom:.35rem;transition:color .3s}
+.plan-desc{font-size:.8rem;color:var(--text2);font-weight:300;line-height:1.7;margin-bottom:1.1rem;transition:color .3s}
+.plan-items{list-style:none;margin-bottom:1.2rem}
+.plan-items li{font-size:.78rem;color:var(--text2);padding:.27rem 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.45rem;transition:color .3s,border-color .3s}
+.plan-items li::before{content:'';width:3px;height:3px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.plan-price{font-family:'Barlow Condensed',sans-serif;font-size:2rem;font-weight:800;color:var(--gold2);line-height:1;transition:color .3s}
+.plan-price small{font-size:.75rem;font-weight:400;color:var(--muted);font-family:'Barlow',sans-serif}
 
-  .btn-gold {
-    background: var(--gold); color: #111;
-    padding: .75rem 1.8rem; border: none;
-    font-family: 'Barlow', sans-serif; font-size: .78rem;
-    font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
-    cursor: pointer; transition: all .3s; text-decoration: none;
-    display: inline-block;
-  }
-  .btn-gold:hover { background: var(--gold2); transform: translateY(-2px); }
-  .btn-outline {
-    background: transparent; color: var(--text);
-    padding: .75rem 1.8rem;
-    border: 1px solid rgba(224,220,210,.2);
-    font-family: 'Barlow', sans-serif; font-size: .78rem;
-    font-weight: 400; letter-spacing: .12em; text-transform: uppercase;
-    cursor: pointer; transition: all .3s; text-decoration: none;
-    display: inline-block;
-  }
-  .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.team-card{border:1px solid var(--border);padding:2rem;background:var(--white);position:relative}
+.team-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--gold)}
+.team-role{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold2);margin-bottom:.25rem}
+.team-name{font-family:'Barlow Condensed',sans-serif;font-size:1.9rem;font-weight:800;text-transform:uppercase;color:var(--dark);line-height:1;margin-bottom:.2rem}
+.team-cred{font-size:.74rem;color:var(--muted);margin-bottom:.75rem}
+.team-bio{font-size:.83rem;color:var(--text2);line-height:1.8;font-weight:300}
 
-  .hero-right { display: flex; flex-direction: column; gap: .8rem; }
-  .stat-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 1px; background: var(--border);
-  }
-  .stat-box { background: var(--card); padding: 1.3rem; text-align: center; }
-  .stat-n {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2.6rem; font-weight: 800;
-    color: var(--gold); line-height: 1; display: block;
-  }
-  .stat-l {
-    font-size: .62rem; letter-spacing: .12em; text-transform: uppercase;
-    color: var(--muted); margin-top: .15rem; display: block;
-  }
-  .pill {
-    display: flex; align-items: center; gap: .8rem;
-    padding: .7rem 1rem;
-    border: 1px solid var(--border);
-    background: var(--card);
-  }
-  .pill-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
-  .pill-text { font-size: .78rem; color: var(--muted); font-weight: 300; }
-  .pill-text strong { color: var(--text); font-weight: 500; display: block; font-size: .8rem; }
+/* FORM */
+.form-wrap{max-width:800px;margin:0 auto}
+.form-intro{text-align:center;margin-bottom:1.5rem}
+.form-intro p{color:var(--text2);font-size:.84rem;font-weight:300;margin-top:.3rem}
+.plan-sel{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);margin-bottom:1.2rem}
+.ps-btn{background:var(--white);padding:.9rem .5rem;text-align:center;cursor:pointer;border:1px solid var(--border);font-family:'Barlow Condensed',sans-serif;font-size:.9rem;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:var(--text2);width:100%;transition:all .25s}
+.ps-btn:hover{background:var(--card);color:var(--dark)}
+.ps-btn.sel{background:var(--dark);color:#fff}
+.ps-sub{font-size:.57rem;font-family:'Barlow',sans-serif;font-weight:400;letter-spacing:.08em;text-transform:uppercase;display:block;margin-top:.15rem;opacity:.75}
+.form-notice{background:var(--gold-light);border-left:3px solid var(--gold);padding:.75rem 1rem;margin-bottom:1rem;font-size:.8rem;color:var(--grafite);display:none}
+.form-notice.show{display:block}
+.form-notice strong{color:var(--gold2)}
+.steps-bar{display:flex;gap:1px;background:var(--border);margin-bottom:1rem;overflow:hidden}
+.step{flex:1;background:var(--white);padding:.6rem .3rem;text-align:center;font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);transition:all .25s;border:1px solid var(--border)}
+.step.active{background:var(--dark);color:#fff;font-weight:700;border-color:var(--dark)}
+.step.done{background:var(--gold-light);color:var(--gold2);border-color:var(--border2)}
+.fsec{display:none}.fsec.active{display:block}
+.ftitle{font-family:'Barlow Condensed',sans-serif;font-size:.95rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--gold2);margin-bottom:.7rem;padding-bottom:.4rem;border-bottom:1.5px solid var(--border2);margin-top:1rem}
+.ftitle:first-child{margin-top:0}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.7rem}
+.fg{display:flex;flex-direction:column;gap:.3rem}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold2);font-weight:600}
+.fg input,.fg select,.fg textarea{background:var(--white);border:1.5px solid var(--border);color:var(--dark);padding:.65rem .85rem;font-family:'Barlow',sans-serif;font-size:.85rem;outline:none;width:100%;transition:border-color .3s}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold)}
+.fg select option{background:var(--white)}
+.fg textarea{resize:vertical;min-height:72px}
+.rgroup{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.2rem}
+.ropt{display:flex;align-items:center;gap:.35rem;cursor:pointer;font-size:.8rem;color:var(--text2)}
+.ropt input{accent-color:var(--gold2);width:auto}
+.range-row{display:flex;align-items:center;gap:.6rem;margin-top:.2rem}
+.range-row input[type=range]{flex:1;accent-color:var(--gold)}
+.range-val{font-size:.9rem;font-weight:600;color:var(--gold2);min-width:1.2rem;text-align:center}
+.upload-area{border:1.5px dashed var(--border2);padding:1.4rem;text-align:center;position:relative;cursor:pointer;transition:border-color .3s;background:var(--white)}
+.upload-area:hover{border-color:var(--gold)}
+.upload-area input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.upload-ico{font-size:1.3rem;color:var(--gold);display:block;margin-bottom:.25rem}
+.upload-lbl{font-size:.8rem;color:var(--text2)}
+.upload-sub{font-size:.65rem;color:var(--muted);margin-top:.15rem}
+.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:.4rem;margin-top:.5rem}
+.thumb{aspect-ratio:1;background:var(--card);border:1px solid var(--border);overflow:hidden}
+.thumb img{width:100%;height:100%;object-fit:cover}
+.fnav{display:flex;justify-content:space-between;align-items:center;margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.prog{font-size:.7rem;color:var(--muted)}
 
-  /* ── DIVIDERS ── */
-  .gold-bar {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
-  }
+/* CTA */
+.cta-sec{padding:3.5rem 3rem;text-align:center;background:var(--dark);position:relative;overflow:hidden}
+.cta-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,rgba(201,168,76,.1) 0%,transparent 65%);pointer-events:none}
+.cta-sec h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:800;text-transform:uppercase;color:#fff;margin-bottom:.5rem;line-height:1.05}
+.cta-sec h2 span{color:var(--gold)}
+.cta-sec p{color:rgba(255,255,255,.6);font-size:.86rem;font-weight:300;margin-bottom:1.5rem}
 
-  /* ── SECTIONS ── */
-  .sec { padding: 3.5rem 3rem; }
-  .sec.alt { background: var(--grafite); }
-  .sec-tag {
-    font-size: .65rem; letter-spacing: .25em;
-    text-transform: uppercase; color: var(--gold); margin-bottom: .35rem;
-  }
-  .sec-h {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
-    font-weight: 800; text-transform: uppercase;
-    color: var(--white); line-height: 1.05; margin-bottom: 2rem;
-  }
-  .sec-h .dim { color: var(--muted); font-weight: 700; }
+/* FOOTER */
+footer{padding:1.3rem 3rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--muted);background:var(--white)}
+footer a{color:var(--gold2);text-decoration:none}
+footer a:hover{text-decoration:underline}
 
-  /* ── PLANS ── */
-  .plans { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); }
-  .plan { background: var(--black); padding: 1.8rem 1.5rem; transition: background .3s; }
-  .plan:hover, .plan.feat { background: var(--card); }
-  .plan.feat { border-top: 2px solid var(--gold); }
-  .plan-badge {
-    font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
-    color: var(--gold); margin-bottom: .7rem; display: block;
-  }
-  .plan-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.6rem; font-weight: 800; text-transform: uppercase;
-    color: var(--white); margin-bottom: .35rem;
-  }
-  .plan-desc { font-size: .8rem; color: var(--muted); font-weight: 300; line-height: 1.7; margin-bottom: 1.1rem; }
-  .plan-items { list-style: none; margin-bottom: 1.2rem; }
-  .plan-items li {
-    font-size: .78rem; color: var(--muted);
-    padding: .27rem 0; border-bottom: 1px solid rgba(201,168,76,.07);
-    display: flex; align-items: center; gap: .45rem;
-  }
-  .plan-items li::before { content: ''; width: 3px; height: 3px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
-  .plan-price {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 2rem; font-weight: 800; color: var(--gold); line-height: 1;
-  }
-  .plan-price small { font-size: .75rem; font-weight: 400; color: var(--muted); font-family: 'Barlow', sans-serif; }
-  .plan-cta {
-    display: block; margin-top: .9rem; text-align: center;
-    padding: .6rem 1rem;
-    background: var(--grafite); color: var(--text);
-    border: 1px solid rgba(224,220,210,.15);
-    font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
-    cursor: pointer; transition: all .3s;
-    font-family: 'Barlow', sans-serif; font-weight: 600; width: 100%;
-  }
-  .plan-cta:hover, .plan.feat .plan-cta {
-    background: var(--gold); color: #111; border-color: var(--gold);
-  }
+/* SUCCESS */
+.success-msg{background:#f0faf0;border:1px solid #a8d5a8;color:#2d6e2d;padding:1rem 1.2rem;font-size:.85rem;text-align:center;display:none;margin-top:1rem}
+.success-msg.show{display:block}
 
-  /* ── TEAM ── */
-  .team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .team-card {
-    border: 1px solid var(--border); padding: 1.8rem;
-    background: var(--card); position: relative;
-  }
-  .team-card::before {
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 2px; background: var(--gold);
-  }
-  .team-role { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: .25rem; }
-  .team-name {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.8rem; font-weight: 800; text-transform: uppercase;
-    color: var(--white); line-height: 1; margin-bottom: .2rem;
-  }
-  .team-cred { font-size: .74rem; color: var(--muted); margin-bottom: .75rem; }
-  .team-bio { font-size: .82rem; color: var(--muted); line-height: 1.8; font-weight: 300; }
-
-  /* ── FORM ── */
-  .form-wrap { max-width: 800px; margin: 0 auto; }
-  .form-intro { text-align: center; margin-bottom: 1.5rem; }
-  .form-intro p { color: var(--muted); font-size: .84rem; font-weight: 300; margin-top: .3rem; }
-
-  .plan-sel { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; background: var(--border); margin-bottom: 1.2rem; }
-  .ps-btn {
-    background: var(--black); padding: .9rem .5rem; text-align: center;
-    cursor: pointer; border: none;
-    font-family: 'Barlow Condensed', sans-serif; font-size: .9rem;
-    font-weight: 800; text-transform: uppercase; letter-spacing: .04em;
-    color: var(--muted); width: 100%; transition: all .25s;
-  }
-  .ps-btn:hover { background: var(--card); color: var(--text); }
-  .ps-btn.sel { background: var(--gold); color: #111; }
-  .ps-sub { font-size: .57rem; font-family: 'Barlow', sans-serif; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; display: block; margin-top: .15rem; opacity: .75; }
-
-  .form-notice {
-    background: var(--card); border-left: 2px solid var(--gold);
-    padding: .75rem 1rem; margin-bottom: 1rem;
-    font-size: .8rem; color: var(--muted); display: none;
-  }
-  .form-notice.show { display: block; }
-  .form-notice strong { color: var(--gold); }
-
-  .steps-bar { display: flex; gap: 1px; background: var(--border); margin-bottom: 1rem; overflow: hidden; }
-  .step {
-    flex: 1; background: var(--black); padding: .6rem .3rem; text-align: center;
-    font-size: .6rem; letter-spacing: .06em; text-transform: uppercase;
-    color: var(--muted); transition: all .25s;
-  }
-  .step.active { background: var(--gold); color: #111; font-weight: 700; }
-  .step.done { background: rgba(201,168,76,.12); color: var(--gold); }
-
-  .fsec { display: none; }
-  .fsec.active { display: block; }
-  .ftitle {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .95rem; font-weight: 800; text-transform: uppercase;
-    letter-spacing: .06em; color: var(--gold);
-    margin-bottom: .7rem; padding-bottom: .4rem;
-    border-bottom: 1px solid var(--border); margin-top: 1rem;
-  }
-  .ftitle:first-child { margin-top: 0; }
-  .fgrid { display: grid; grid-template-columns: 1fr 1fr; gap: .9rem; margin-bottom: .7rem; }
-  .fg { display: flex; flex-direction: column; gap: .3rem; }
-  .fg.full { grid-column: 1 / -1; }
-  .fg label { font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); }
-  .fg input, .fg select, .fg textarea {
-    background: var(--black); border: 1px solid var(--border);
-    color: var(--text); padding: .65rem .85rem;
-    font-family: 'Barlow', sans-serif; font-size: .85rem;
-    outline: none; width: 100%; transition: border-color .3s;
-  }
-  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
-  .fg select option { background: var(--card); }
-  .fg textarea { resize: vertical; min-height: 72px; }
-  .rgroup { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: .2rem; }
-  .ropt { display: flex; align-items: center; gap: .35rem; cursor: pointer; font-size: .8rem; color: var(--muted); }
-  .ropt input { accent-color: var(--gold); width: auto; }
-  .range-row { display: flex; align-items: center; gap: .6rem; margin-top: .2rem; }
-  .range-row input[type=range] { flex: 1; accent-color: var(--gold); }
-  .range-val { font-size: .9rem; font-weight: 500; color: var(--gold); min-width: 1.2rem; text-align: center; }
-
-  .upload-area {
-    border: 1px dashed rgba(201,168,76,.3); padding: 1.4rem;
-    text-align: center; position: relative; cursor: pointer; transition: border-color .3s;
-  }
-  .upload-area:hover { border-color: var(--gold); }
-  .upload-area input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
-  .upload-ico { font-size: 1.3rem; color: var(--gold); display: block; margin-bottom: .25rem; }
-  .upload-lbl { font-size: .8rem; color: var(--muted); }
-  .upload-sub { font-size: .65rem; color: var(--muted); opacity: .6; margin-top: .15rem; }
-  .thumbs { display: grid; grid-template-columns: repeat(4,1fr); gap: .4rem; margin-top: .5rem; }
-  .thumb { aspect-ratio: 1; background: var(--black); border: 1px solid var(--border); overflow: hidden; }
-  .thumb img { width: 100%; height: 100%; object-fit: cover; }
-
-  .fnav {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-top: 1rem; padding-top: .9rem; border-top: 1px solid var(--border);
-  }
-  .prog { font-size: .7rem; color: var(--muted); }
-
-  /* ── CTA ── */
-  .cta-sec {
-    padding: 3.5rem 3rem; text-align: center;
-    position: relative; overflow: hidden;
-  }
-  .cta-sec::before {
-    content: ''; position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 50% 50%, rgba(201,168,76,.06) 0%, transparent 65%);
-    pointer-events: none;
-  }
-  .cta-sec h2 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: clamp(2rem, 4.5vw, 3.5rem);
-    font-weight: 800; text-transform: uppercase;
-    color: var(--white); margin-bottom: .5rem; line-height: 1.05;
-  }
-  .cta-sec h2 span { color: var(--gold); }
-  .cta-sec p { color: var(--muted); font-size: .86rem; font-weight: 300; margin-bottom: 1.5rem; }
-
-  /* ── FOOTER ── */
-  footer {
-    padding: 1.3rem 3rem;
-    border-top: 1px solid var(--border);
-    display: flex; justify-content: space-between; align-items: center;
-    font-size: .72rem; color: var(--muted);
-    background: var(--grafite);
-  }
-  footer span.gold { color: var(--gold); }
-
-  /* ── SUCCESS MSG ── */
-  .success-msg {
-    background: rgba(42,107,42,.15); border: 1px solid rgba(42,107,42,.4);
-    color: #6fcf6f; padding: 1rem 1.2rem;
-    font-size: .85rem; text-align: center; display: none; margin-top: 1rem;
-  }
-  .success-msg.show { display: block; }
-
-  /* ── MOBILE ── */
-  @media (max-width: 768px) {
-    nav { padding: .9rem 1.2rem; }
-    .nav-links, .nav-cta { display: none; }
-    .nav-toggle { display: block; }
-    .nav-links.open {
-      display: flex; flex-direction: column; gap: 0;
-      position: fixed; top: 56px; left: 0; right: 0;
-      background: var(--grafite); border-bottom: 1px solid var(--border);
-      padding: 1rem 1.5rem; z-index: 99;
-    }
-    .nav-links.open li { padding: .6rem 0; border-bottom: 1px solid var(--border); }
-    .hero { grid-template-columns: 1fr; padding: 2rem 1.2rem; min-height: auto; gap: 1.5rem; }
-    .hero-right { display: none; }
-    .sec { padding: 2.5rem 1.2rem; }
-    .cta-sec { padding: 2.5rem 1.2rem; }
-    footer { padding: 1rem 1.2rem; flex-direction: column; gap: .4rem; text-align: center; }
-    .plans { grid-template-columns: 1fr; }
-    .team-grid { grid-template-columns: 1fr; }
-    .fgrid { grid-template-columns: 1fr; }
-    .plan-sel { grid-template-columns: 1fr; }
-    .steps-bar { flex-wrap: wrap; }
-  }
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:.9rem 1.2rem}
+  .nav-links,.nav-cta{display:none}
+  .nav-toggle{display:block}
+  .nav-links.open{display:flex;flex-direction:column;gap:0;position:fixed;top:60px;left:0;right:0;background:var(--white);border-bottom:1px solid var(--border);padding:1rem 1.5rem;z-index:99}
+  .nav-links.open li{padding:.6rem 0;border-bottom:1px solid var(--border)}
+  .hero{grid-template-columns:1fr;padding:2rem 1.2rem;min-height:auto;gap:1.5rem}
+  .hero-right{display:none}
+  .sec,.cta-sec{padding:2.5rem 1.2rem}
+  footer{padding:1rem 1.2rem;flex-direction:column;gap:.4rem;text-align:center}
+  .plans,.team-grid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr}
+  .plan-sel{grid-template-columns:1fr}
+  .steps-bar{flex-wrap:wrap}
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="logo-img-link"><img src="data:image/png;base64,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" alt="EliteFit" class="nav-logo"></a>
+  <a href="#" class="logo-link"><img src="data:image/png;base64,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" alt="EliteFit" class="nav-logo"></a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#planos">Planos</a></li>
     <li><a href="#equipe">Equipe</a></li>
@@ -392,23 +192,20 @@
     <li><a href="https://instagram.com/elitefit2x" target="_blank" rel="noopener">Instagram</a></li>
   </ul>
   <button class="nav-cta" onclick="document.getElementById('avaliacao').scrollIntoView({behavior:'smooth'})">Começar agora</button>
-  <button class="nav-toggle" id="navToggle" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div>
     <div class="hero-tag">Treino · Nutrição · Resultados</div>
     <h1>
-      <span class="w1">TRANSFORME</span>
-      <span class="w2">SEU CORPO</span>
-      <span class="w3">DE VERDADE</span>
+      <span style="display:block">TRANSFORME</span>
+      <span class="gold" style="display:block">SEU CORPO</span>
+      <span class="dim" style="display:block">DE VERDADE</span>
     </h1>
     <p class="hero-desc">Metodologia personalizada unindo prescrição de treino e nutrição esportiva. Resultados reais para qualquer objetivo e perfil.</p>
     <div class="hero-btns">
-      <button class="btn-gold" onclick="document.getElementById('avaliacao').scrollIntoView({behavior:'smooth'})">Fazer avaliação gratuita</button>
+      <button class="btn-dark" onclick="document.getElementById('avaliacao').scrollIntoView({behavior:'smooth'})">Fazer avaliação gratuita</button>
       <button class="btn-outline" onclick="document.getElementById('planos').scrollIntoView({behavior:'smooth'})">Ver planos</button>
     </div>
   </div>
@@ -427,7 +224,6 @@
 
 <div class="gold-bar"></div>
 
-<!-- PLANOS -->
 <section class="sec alt" id="planos">
   <div class="sec-tag">Nossos planos</div>
   <h2 class="sec-h">ESCOLHA O PLANO <span class="dim">IDEAL PARA VOCÊ</span></h2>
@@ -436,46 +232,29 @@
       <span class="plan-badge">— Treino</span>
       <div class="plan-name">Personal Coach</div>
       <p class="plan-desc">Treino 100% personalizado para hipertrofia, definição e recomposição corporal com técnicas avançadas e ajustes contínuos.</p>
-      <ul class="plan-items">
-        <li>Anamnese completa</li>
-        <li>Planilha 12 semanas</li>
-        <li>Vídeos demonstrativos</li>
-        <li>Suporte por mensagem</li>
-      </ul>
+      <ul class="plan-items"><li>Anamnese completa</li><li>Planilha 12 semanas</li><li>Vídeos demonstrativos</li><li>Suporte por mensagem</li></ul>
       <div class="plan-price">R$129<small>/mês</small></div>
-      <button class="plan-cta" onclick="selectPlan('treino')">Começar agora</button>
+      <button class="btn-plan" onclick="selectPlan('treino')">Começar agora</button>
     </div>
     <div class="plan feat">
       <span class="plan-badge">★ Mais completo</span>
       <div class="plan-name">Combo Elite</div>
       <p class="plan-desc">Treino + nutrição esportiva em total sinergia. Método baseado em evidências para acelerar definição, performance e resultado real.</p>
-      <ul class="plan-items">
-        <li>Tudo do plano Coach</li>
-        <li>Plano nutricional completo</li>
-        <li>Suplementação orientada</li>
-        <li>Check-in semanal</li>
-        <li>Ajustes mensais</li>
-      </ul>
+      <ul class="plan-items"><li>Tudo do plano Coach</li><li>Plano nutricional completo</li><li>Suplementação orientada</li><li>Check-in semanal</li><li>Ajustes mensais</li></ul>
       <div class="plan-price">R$239<small>/mês</small></div>
-      <button class="plan-cta" onclick="selectPlan('combo')">Começar agora</button>
+      <button class="btn-plan" onclick="selectPlan('combo')">Começar agora</button>
     </div>
     <div class="plan">
       <span class="plan-badge">— Nutrição</span>
       <div class="plan-name">Nutri Sport</div>
       <p class="plan-desc">Estratégias personalizadas para transformar seu corpo com planos práticos e objetivos pensados para você evoluir com consistência.</p>
-      <ul class="plan-items">
-        <li>Anamnese nutricional</li>
-        <li>Cardápio semanal</li>
-        <li>Lista de compras</li>
-        <li>Suporte contínuo</li>
-      </ul>
+      <ul class="plan-items"><li>Anamnese nutricional</li><li>Cardápio semanal</li><li>Lista de compras</li><li>Suporte contínuo</li></ul>
       <div class="plan-price">R$129<small>/mês</small></div>
-      <button class="plan-cta" onclick="selectPlan('nutri')">Começar agora</button>
+      <button class="btn-plan" onclick="selectPlan('nutri')">Começar agora</button>
     </div>
   </div>
 </section>
 
-<!-- EQUIPE -->
 <section class="sec" id="equipe">
   <div class="sec-tag">Quem somos</div>
   <h2 class="sec-h">A DUPLA POR TRÁS <span class="dim">DOS SEUS RESULTADOS</span></h2>
@@ -497,66 +276,53 @@
 
 <div class="gold-bar"></div>
 
-<!-- AVALIAÇÃO -->
 <section class="sec alt" id="avaliacao">
   <div class="form-intro">
     <div class="sec-tag">Avaliação gratuita</div>
     <h2 class="sec-h" style="margin-bottom:.2rem">CONTA PRA GENTE <span class="dim">SOBRE VOCÊ</span></h2>
     <p>Selecione o plano — o questionário se adapta automaticamente.</p>
   </div>
-
   <div class="form-wrap">
     <div class="plan-sel">
       <button class="ps-btn" id="ps-treino" onclick="selectPlan('treino')">Personal Coach<span class="ps-sub">Só treino</span></button>
       <button class="ps-btn" id="ps-combo"  onclick="selectPlan('combo')">Combo Elite<span class="ps-sub">Treino + Nutrição</span></button>
       <button class="ps-btn" id="ps-nutri"  onclick="selectPlan('nutri')">Nutri Sport<span class="ps-sub">Só nutrição</span></button>
     </div>
-
     <div class="form-notice" id="fn"></div>
     <div class="steps-bar" id="stBar" style="display:none"></div>
-
     <form id="mainForm" action="https://formspree.io/f/mwvazpng" method="POST">
       <input type="hidden" name="_subject" id="fSubject" value="Nova avaliação EliteFit">
       <input type="hidden" name="plano" id="fPlano" value="">
-
       <div id="fBody"></div>
-
       <div class="fnav" id="fnav" style="display:none">
         <button type="button" class="btn-outline" id="prevBtn" onclick="go(-1)" style="visibility:hidden">← Anterior</button>
         <span class="prog" id="prog"></span>
-        <button type="button" class="btn-gold" id="nextBtn" onclick="go(1)">Próximo →</button>
+        <button type="button" class="btn-dark" id="nextBtn" onclick="go(1)">Próximo →</button>
       </div>
     </form>
-
-    <div class="success-msg" id="successMsg">
-      ✓ Avaliação enviada com sucesso! Entraremos em contato em até 24h pelo WhatsApp.
-    </div>
+    <div class="success-msg" id="successMsg">✓ Avaliação enviada! Entraremos em contato em até 24h pelo WhatsApp.</div>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-sec">
   <h2>PRONTO PARA <span>COMEÇAR?</span></h2>
   <p>Preencha o questionário — respondemos em até 24h pelo WhatsApp</p>
-  <button class="btn-gold" onclick="document.getElementById('avaliacao').scrollIntoView({behavior:'smooth'})">Fazer avaliação gratuita</button>
+  <button class="btn-dark" style="background:var(--gold);color:#111" onclick="document.getElementById('avaliacao').scrollIntoView({behavior:'smooth'})">Fazer avaliação gratuita</button>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <span>© 2025 EliteFit · FBueno & Isabel Peixinho</span>
-  <a href="https://instagram.com/elitefit2x" target="_blank" rel="noopener" style="color:#C9A84C;text-decoration:none;">@elitefit2x</a>
-  <span class="gold">Treino + Nutrição = Resultados</span>
+  <a href="https://instagram.com/elitefit2x" target="_blank" rel="noopener">@elitefit2x</a>
+  <span>Treino + Nutrição = Resultados</span>
 </footer>
 
 <script>
-// Nav mobile
-document.getElementById('navToggle').addEventListener('click', function(){
+document.getElementById('navToggle').addEventListener('click',function(){
   document.getElementById('navLinks').classList.toggle('open');
 });
 
-// Form engine
-const BASE = [
-  { id:'b1', title:'Dados', fields:`
+const BASE=[
+  {id:'b1',title:'Dados',fields:`
     <div class="ftitle">Identificação</div>
     <div class="fgrid">
       <div class="fg"><label>Nome completo *</label><input type="text" name="nome" placeholder="Seu nome" required></div>
@@ -565,301 +331,139 @@ const BASE = [
       <div class="fg"><label>WhatsApp *</label><input type="tel" name="whatsapp" placeholder="(19) 99999-9999" required></div>
       <div class="fg"><label>Peso (kg)</label><input type="number" name="peso" placeholder="75"></div>
       <div class="fg"><label>Altura (cm)</label><input type="number" name="altura" placeholder="175"></div>
-      <div class="fg full"><label>Sexo biológico</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="sexo" value="Masculino"> Masculino</label>
-          <label class="ropt"><input type="radio" name="sexo" value="Feminino"> Feminino</label>
-        </div>
-      </div>
-      <div class="fg"><label>Rotina diária</label>
-        <select name="rotina"><option>Sedentário</option><option>Levemente ativo</option><option>Moderadamente ativo</option><option>Muito ativo</option></select>
-      </div>
-      <div class="fg"><label>Como nos encontrou?</label>
-        <select name="origem"><option>Instagram</option><option>Indicação</option><option>Google</option><option>Outro</option></select>
-      </div>
-    </div>`
-  },
-  { id:'b2', title:'Saúde', fields:`
+      <div class="fg full"><label>Sexo biológico</label><div class="rgroup"><label class="ropt"><input type="radio" name="sexo" value="Masculino"> Masculino</label><label class="ropt"><input type="radio" name="sexo" value="Feminino"> Feminino</label></div></div>
+      <div class="fg"><label>Rotina diária</label><select name="rotina"><option>Sedentário</option><option>Levemente ativo</option><option>Moderadamente ativo</option><option>Muito ativo</option></select></div>
+      <div class="fg"><label>Como nos encontrou?</label><select name="origem"><option>Instagram</option><option>Indicação</option><option>Google</option><option>Outro</option></select></div>
+    </div>`},
+  {id:'b2',title:'Saúde',fields:`
     <div class="ftitle">Histórico de Saúde</div>
     <div class="fgrid">
-      <div class="fg full"><label>Doença diagnosticada?</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="doenca" value="Não"> Não</label>
-          <label class="ropt"><input type="radio" name="doenca" value="Sim"> Sim</label>
-        </div>
-      </div>
+      <div class="fg full"><label>Doença diagnosticada?</label><div class="rgroup"><label class="ropt"><input type="radio" name="doenca" value="Não"> Não</label><label class="ropt"><input type="radio" name="doenca" value="Sim"> Sim</label></div></div>
       <div class="fg full"><label>Se sim, descreva</label><textarea name="doenca_desc" placeholder="Hipertensão, diabetes..."></textarea></div>
-      <div class="fg full"><label>Medicamento contínuo?</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="medicamento" value="Não"> Não</label>
-          <label class="ropt"><input type="radio" name="medicamento" value="Sim"> Sim</label>
-        </div>
-      </div>
+      <div class="fg full"><label>Medicamento contínuo?</label><div class="rgroup"><label class="ropt"><input type="radio" name="medicamento" value="Não"> Não</label><label class="ropt"><input type="radio" name="medicamento" value="Sim"> Sim</label></div></div>
       <div class="fg full"><label>Se sim, quais e dosagem?</label><textarea name="medicamento_desc" placeholder="Nome e dosagem..."></textarea></div>
-      <div class="fg full"><label>Lesão ou limitação física?</label><textarea name="lesao" placeholder="Lesões, cirurgias, dores recorrentes... Se não tiver, escreva Não"></textarea></div>
-      <div class="fg"><label>Fuma?</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="fuma" value="Não"> Não</label>
-          <label class="ropt"><input type="radio" name="fuma" value="Sim"> Sim</label>
-        </div>
-      </div>
-      <div class="fg"><label>Álcool?</label>
-        <select name="alcool"><option>Não consumo</option><option>Raramente</option><option>Fins de semana</option><option>Frequentemente</option></select>
-      </div>
-      <div class="fg"><label>Horas de sono</label>
-        <select name="sono"><option>Menos de 5h</option><option>5–6h</option><option>6–7h</option><option>7–8h</option><option>Mais de 8h</option></select>
-      </div>
-      <div class="fg full"><label>Nível de estresse (1–10)</label>
-        <div class="range-row">
-          <input type="range" name="estresse" min="1" max="10" value="5" oninput="this.nextElementSibling.textContent=this.value">
-          <span class="range-val">5</span>
-        </div>
-      </div>
-    </div>`
-  }
+      <div class="fg full"><label>Lesão ou limitação física?</label><textarea name="lesao" placeholder="Lesões, cirurgias, dores... Se não, escreva Não"></textarea></div>
+      <div class="fg"><label>Fuma?</label><div class="rgroup"><label class="ropt"><input type="radio" name="fuma" value="Não"> Não</label><label class="ropt"><input type="radio" name="fuma" value="Sim"> Sim</label></div></div>
+      <div class="fg"><label>Álcool?</label><select name="alcool"><option>Não consumo</option><option>Raramente</option><option>Fins de semana</option><option>Frequentemente</option></select></div>
+      <div class="fg"><label>Horas de sono</label><select name="sono"><option>Menos de 5h</option><option>5–6h</option><option>6–7h</option><option>7–8h</option><option>Mais de 8h</option></select></div>
+      <div class="fg full"><label>Nível de estresse (1–10)</label><div class="range-row"><input type="range" name="estresse" min="1" max="10" value="5" oninput="this.nextElementSibling.textContent=this.value"><span class="range-val">5</span></div></div>
+    </div>`}
 ];
-
-const TREINO = [
-  { id:'t1', title:'Treino', fields:`
+const TREINO=[
+  {id:'t1',title:'Treino',fields:`
     <div class="ftitle">Perfil de Treino</div>
     <div class="fgrid">
-      <div class="fg full"><label>Experiência com musculação</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="experiencia" value="Nunca treinei"> Nunca treinei</label>
-          <label class="ropt"><input type="radio" name="experiencia" value="Iniciante"> Iniciante</label>
-          <label class="ropt"><input type="radio" name="experiencia" value="Intermediário"> Intermediário</label>
-          <label class="ropt"><input type="radio" name="experiencia" value="Avançado"> Avançado</label>
-        </div>
-      </div>
-      <div class="fg full"><label>Objetivo principal</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="objetivo_treino" value="Hipertrofia"> Hipertrofia</label>
-          <label class="ropt"><input type="radio" name="objetivo_treino" value="Emagrecimento"> Emagrecimento</label>
-          <label class="ropt"><input type="radio" name="objetivo_treino" value="Hipertrofia + Emagrecimento"> Hipertrofia + Emagrecimento</label>
-          <label class="ropt"><input type="radio" name="objetivo_treino" value="Saúde geral"> Saúde geral</label>
-        </div>
-      </div>
-      <div class="fg"><label>Dias disponíveis/semana</label>
-        <select name="dias_treino"><option>2x</option><option>3x</option><option>4x</option><option>5x</option><option>6x+</option></select>
-      </div>
-      <div class="fg"><label>Tempo por sessão</label>
-        <select name="tempo_sessao"><option>Até 45 min</option><option>45 min – 1h</option><option>1h – 1h30</option><option>Mais de 1h30</option></select>
-      </div>
-      <div class="fg"><label>Período preferido</label>
-        <select name="periodo"><option>Manhã</option><option>Tarde</option><option>Noite</option><option>Variado</option></select>
-      </div>
-      <div class="fg"><label>Acesso a equipamentos</label>
-        <select name="equipamentos"><option>Academia completa</option><option>Academia limitada</option><option>Em casa c/ equipamentos</option><option>Em casa s/ equipamentos</option></select>
-      </div>
+      <div class="fg full"><label>Experiência com musculação</label><div class="rgroup"><label class="ropt"><input type="radio" name="experiencia" value="Nunca treinei"> Nunca treinei</label><label class="ropt"><input type="radio" name="experiencia" value="Iniciante"> Iniciante</label><label class="ropt"><input type="radio" name="experiencia" value="Intermediário"> Intermediário</label><label class="ropt"><input type="radio" name="experiencia" value="Avançado"> Avançado</label></div></div>
+      <div class="fg full"><label>Objetivo principal</label><div class="rgroup"><label class="ropt"><input type="radio" name="objetivo_treino" value="Hipertrofia"> Hipertrofia</label><label class="ropt"><input type="radio" name="objetivo_treino" value="Emagrecimento"> Emagrecimento</label><label class="ropt"><input type="radio" name="objetivo_treino" value="Hipertrofia + Emagrecimento"> Hipertrofia + Emagrecimento</label><label class="ropt"><input type="radio" name="objetivo_treino" value="Saúde geral"> Saúde geral</label></div></div>
+      <div class="fg"><label>Dias/semana</label><select name="dias_treino"><option>2x</option><option>3x</option><option>4x</option><option>5x</option><option>6x+</option></select></div>
+      <div class="fg"><label>Tempo por sessão</label><select name="tempo_sessao"><option>Até 45 min</option><option>45 min – 1h</option><option>1h – 1h30</option><option>Mais de 1h30</option></select></div>
+      <div class="fg"><label>Período preferido</label><select name="periodo"><option>Manhã</option><option>Tarde</option><option>Noite</option><option>Variado</option></select></div>
+      <div class="fg"><label>Acesso a equipamentos</label><select name="equipamentos"><option>Academia completa</option><option>Academia limitada</option><option>Em casa c/ equipamentos</option><option>Em casa s/ equipamentos</option></select></div>
       <div class="fg full"><label>Sente dor em algum exercício?</label><textarea name="dor_exercicio" placeholder="Ex: agachamento no joelho, supino no ombro..."></textarea></div>
-      <div class="fg full"><label>Informações adicionais para o coach</label><textarea name="obs_treino" placeholder="Preferências, metas específicas..."></textarea></div>
-    </div>`
-  },
-  { id:'t2', title:'Fotos', fields:`
+      <div class="fg full"><label>Informações adicionais</label><textarea name="obs_treino" placeholder="Preferências, metas específicas..."></textarea></div>
+    </div>`},
+  {id:'t2',title:'Contato',fields:`
     <div class="ftitle">Contato & Fotos</div>
-    <p style="color:var(--muted);font-size:.82rem;margin-bottom:.8rem;font-weight:300">Fotos de avaliação devem ser enviadas pelo WhatsApp após o preenchimento. Sigilo total.</p>
+    <p style="color:var(--text2);font-size:.82rem;margin-bottom:.8rem;font-weight:300">Fotos de avaliação envie pelo WhatsApp após o preenchimento. Sigilo total.</p>
     <div class="fgrid">
-      <div class="fg"><label>Melhor horário para contato</label>
-        <select name="horario_contato"><option>Manhã (8h–12h)</option><option>Tarde (12h–18h)</option><option>Noite (18h–21h)</option></select>
-      </div>
-      <div class="fg"><label>Canal preferido</label>
-        <select name="canal"><option>WhatsApp</option><option>E-mail</option><option>Instagram</option></select>
-      </div>
-      <div class="fg full"><label>Observações finais</label><textarea name="obs_final_treino" placeholder="Algo mais que queira compartilhar com o FBueno..."></textarea></div>
-    </div>`
-  }
+      <div class="fg"><label>Melhor horário</label><select name="horario_contato"><option>Manhã (8h–12h)</option><option>Tarde (12h–18h)</option><option>Noite (18h–21h)</option></select></div>
+      <div class="fg"><label>Canal preferido</label><select name="canal"><option>WhatsApp</option><option>E-mail</option><option>Instagram</option></select></div>
+      <div class="fg full"><label>Observações finais</label><textarea name="obs_final_treino" placeholder="Algo mais para o FBueno..."></textarea></div>
+    </div>`}
 ];
-
-const NUTRI = [
-  { id:'n1', title:'Nutrição', fields:`
+const NUTRI=[
+  {id:'n1',title:'Nutrição',fields:`
     <div class="ftitle">Objetivo & Restrições</div>
     <div class="fgrid">
-      <div class="fg full"><label>Objetivo nutricional</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="objetivo_nutri" value="Ganho de massa"> Ganho de massa</label>
-          <label class="ropt"><input type="radio" name="objetivo_nutri" value="Emagrecimento"> Emagrecimento</label>
-          <label class="ropt"><input type="radio" name="objetivo_nutri" value="Definição"> Definição</label>
-          <label class="ropt"><input type="radio" name="objetivo_nutri" value="Saúde geral"> Saúde geral</label>
-        </div>
-      </div>
-      <div class="fg full"><label>Restrição alimentar</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="restricao" value="Nenhuma"> Nenhuma</label>
-          <label class="ropt"><input type="radio" name="restricao" value="Glúten"> Glúten</label>
-          <label class="ropt"><input type="radio" name="restricao" value="Lactose"> Lactose</label>
-          <label class="ropt"><input type="radio" name="restricao" value="Vegetariano"> Vegetariano</label>
-          <label class="ropt"><input type="radio" name="restricao" value="Vegano"> Vegano</label>
-          <label class="ropt"><input type="radio" name="restricao" value="Outra"> Outra</label>
-        </div>
-      </div>
+      <div class="fg full"><label>Objetivo nutricional</label><div class="rgroup"><label class="ropt"><input type="radio" name="objetivo_nutri" value="Ganho de massa"> Ganho de massa</label><label class="ropt"><input type="radio" name="objetivo_nutri" value="Emagrecimento"> Emagrecimento</label><label class="ropt"><input type="radio" name="objetivo_nutri" value="Definição"> Definição</label><label class="ropt"><input type="radio" name="objetivo_nutri" value="Saúde geral"> Saúde geral</label></div></div>
+      <div class="fg full"><label>Restrição alimentar</label><div class="rgroup"><label class="ropt"><input type="radio" name="restricao" value="Nenhuma"> Nenhuma</label><label class="ropt"><input type="radio" name="restricao" value="Glúten"> Glúten</label><label class="ropt"><input type="radio" name="restricao" value="Lactose"> Lactose</label><label class="ropt"><input type="radio" name="restricao" value="Vegetariano"> Vegetariano</label><label class="ropt"><input type="radio" name="restricao" value="Vegano"> Vegano</label><label class="ropt"><input type="radio" name="restricao" value="Outra"> Outra</label></div></div>
       <div class="fg full"><label>Alergias confirmadas</label><textarea name="alergias" placeholder="Se não tiver, escreva Não"></textarea></div>
       <div class="fg full"><label>Alimentos que não come (preferência)</label><textarea name="nao_come" placeholder="Liste o que evita por gosto..."></textarea></div>
       <div class="fg full"><label>Alimentos favoritos para manter</label><textarea name="favoritos" placeholder="O que você ama comer..."></textarea></div>
     </div>
     <div class="ftitle">Rotina Alimentar</div>
     <div class="fgrid">
-      <div class="fg"><label>Refeições por dia</label>
-        <select name="refeicoes"><option>1–2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select>
-      </div>
-      <div class="fg"><label>Come fora com frequência?</label>
-        <select name="come_fora"><option>Raramente</option><option>1–2x/semana</option><option>3–4x/semana</option><option>Todo dia</option></select>
-      </div>
-      <div class="fg"><label>Água por dia</label>
-        <select name="agua"><option>Menos de 1L</option><option>1–1,5L</option><option>1,5–2L</option><option>Mais de 2L</option></select>
-      </div>
-      <div class="fg"><label>Cafeína?</label>
-        <select name="cafeina"><option>Não</option><option>1 café/dia</option><option>2–3 cafés/dia</option><option>Pré-treino</option><option>Bastante</option></select>
-      </div>
+      <div class="fg"><label>Refeições por dia</label><select name="refeicoes"><option>1–2</option><option>3</option><option>4</option><option>5</option><option>6+</option></select></div>
+      <div class="fg"><label>Come fora com frequência?</label><select name="come_fora"><option>Raramente</option><option>1–2x/semana</option><option>3–4x/semana</option><option>Todo dia</option></select></div>
+      <div class="fg"><label>Água por dia</label><select name="agua"><option>Menos de 1L</option><option>1–1,5L</option><option>1,5–2L</option><option>Mais de 2L</option></select></div>
+      <div class="fg"><label>Cafeína?</label><select name="cafeina"><option>Não</option><option>1 café/dia</option><option>2–3 cafés/dia</option><option>Pré-treino</option><option>Bastante</option></select></div>
       <div class="fg full"><label>Horário das refeições</label><textarea name="horario_refeicoes" placeholder="Ex: café 7h, lanche 10h, almoço 12h30..."></textarea></div>
-    </div>`
-  },
-  { id:'n2', title:'Exames', fields:`
+    </div>`},
+  {id:'n2',title:'Exames',fields:`
     <div class="ftitle">Suplementação & Exames</div>
     <div class="fgrid">
-      <div class="fg full"><label>Usa suplementos?</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="suplementos" value="Não"> Não</label>
-          <label class="ropt"><input type="radio" name="suplementos" value="Sim"> Sim</label>
-        </div>
-      </div>
+      <div class="fg full"><label>Usa suplementos?</label><div class="rgroup"><label class="ropt"><input type="radio" name="suplementos" value="Não"> Não</label><label class="ropt"><input type="radio" name="suplementos" value="Sim"> Sim</label></div></div>
       <div class="fg full"><label>Se sim, quais?</label><textarea name="suplementos_desc" placeholder="Whey, creatina, vitamina D..."></textarea></div>
-      <div class="fg full"><label>Exames de sangue recentes?</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="exames" value="Não fiz"> Não fiz</label>
-          <label class="ropt"><input type="radio" name="exames" value="Sim, menos de 6 meses"> Sim, menos de 6 meses</label>
-          <label class="ropt"><input type="radio" name="exames" value="Sim, mais de 6 meses"> Sim, mais de 6 meses</label>
-        </div>
-      </div>
+      <div class="fg full"><label>Exames de sangue recentes?</label><div class="rgroup"><label class="ropt"><input type="radio" name="exames" value="Não fiz"> Não fiz</label><label class="ropt"><input type="radio" name="exames" value="Sim, menos de 6 meses"> Sim, menos de 6 meses</label><label class="ropt"><input type="radio" name="exames" value="Sim, mais de 6 meses"> Sim, mais de 6 meses</label></div></div>
       <div class="fg full"><label>Resultados relevantes</label><textarea name="exames_resultado" placeholder="Pode enviar o PDF pelo WhatsApp também..."></textarea></div>
       <div class="fg full"><label>Já fez dieta antes? Como foi?</label><textarea name="dieta_anterior" placeholder="O que funcionou, o que foi difícil..."></textarea></div>
     </div>
     <div class="ftitle">Saúde Intestinal</div>
     <div class="fgrid">
-      <div class="fg full"><label>Frequência de evacuação/semana</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="radio" name="evacuacao" value="1x/dia ou mais"> 1x/dia ou mais</label>
-          <label class="ropt"><input type="radio" name="evacuacao" value="3–5x/semana"> 3–5x/semana</label>
-          <label class="ropt"><input type="radio" name="evacuacao" value="1–2x/semana"> 1–2x/semana</label>
-          <label class="ropt"><input type="radio" name="evacuacao" value="Irregular"> Irregular</label>
-        </div>
-      </div>
-      <div class="fg full"><label>Sintomas intestinais frequentes</label>
-        <div class="rgroup">
-          <label class="ropt"><input type="checkbox" name="sintomas[]" value="Gases"> Gases</label>
-          <label class="ropt"><input type="checkbox" name="sintomas[]" value="Inchaço"> Inchaço</label>
-          <label class="ropt"><input type="checkbox" name="sintomas[]" value="Constipação"> Constipação</label>
-          <label class="ropt"><input type="checkbox" name="sintomas[]" value="Diarreia"> Diarreia</label>
-          <label class="ropt"><input type="checkbox" name="sintomas[]" value="Refluxo"> Refluxo</label>
-          <label class="ropt"><input type="checkbox" name="sintomas[]" value="Nenhum"> Nenhum</label>
-        </div>
-      </div>
+      <div class="fg full"><label>Frequência de evacuação/semana</label><div class="rgroup"><label class="ropt"><input type="radio" name="evacuacao" value="1x/dia ou mais"> 1x/dia ou mais</label><label class="ropt"><input type="radio" name="evacuacao" value="3–5x/semana"> 3–5x/semana</label><label class="ropt"><input type="radio" name="evacuacao" value="1–2x/semana"> 1–2x/semana</label><label class="ropt"><input type="radio" name="evacuacao" value="Irregular"> Irregular</label></div></div>
+      <div class="fg full"><label>Sintomas frequentes</label><div class="rgroup"><label class="ropt"><input type="checkbox" name="sintomas[]" value="Gases"> Gases</label><label class="ropt"><input type="checkbox" name="sintomas[]" value="Inchaço"> Inchaço</label><label class="ropt"><input type="checkbox" name="sintomas[]" value="Constipação"> Constipação</label><label class="ropt"><input type="checkbox" name="sintomas[]" value="Diarreia"> Diarreia</label><label class="ropt"><input type="checkbox" name="sintomas[]" value="Refluxo"> Refluxo</label><label class="ropt"><input type="checkbox" name="sintomas[]" value="Nenhum"> Nenhum</label></div></div>
       <div class="fg full"><label>Observações intestinais</label><textarea name="obs_intestinal" placeholder="SII, probióticos, intolerâncias..."></textarea></div>
-    </div>`
-  },
-  { id:'n3', title:'Contato', fields:`
+    </div>`},
+  {id:'n3',title:'Contato',fields:`
     <div class="ftitle">Contato & Observações</div>
-    <p style="color:var(--muted);font-size:.82rem;margin-bottom:.8rem;font-weight:300">Fotos de avaliação devem ser enviadas pelo WhatsApp após o preenchimento. Sigilo total.</p>
+    <p style="color:var(--text2);font-size:.82rem;margin-bottom:.8rem;font-weight:300">Fotos de avaliação envie pelo WhatsApp após o preenchimento. Sigilo total.</p>
     <div class="fgrid">
-      <div class="fg"><label>Melhor horário para contato</label>
-        <select name="horario_contato_n"><option>Manhã (8h–12h)</option><option>Tarde (12h–18h)</option><option>Noite (18h–21h)</option></select>
-      </div>
-      <div class="fg"><label>Canal preferido</label>
-        <select name="canal_n"><option>WhatsApp</option><option>E-mail</option><option>Instagram</option></select>
-      </div>
+      <div class="fg"><label>Melhor horário</label><select name="horario_contato_n"><option>Manhã (8h–12h)</option><option>Tarde (12h–18h)</option><option>Noite (18h–21h)</option></select></div>
+      <div class="fg"><label>Canal preferido</label><select name="canal_n"><option>WhatsApp</option><option>E-mail</option><option>Instagram</option></select></div>
       <div class="fg full"><label>Algo mais para a Isabel?</label><textarea name="obs_final_nutri" placeholder="Informações adicionais..."></textarea></div>
-    </div>`
-  }
+    </div>`}
 ];
 
-let steps = [], cur = 0;
-
-function selectPlan(plan) {
-  ['treino','combo','nutri'].forEach(p => document.getElementById('ps-'+p).classList.toggle('sel', p === plan));
-  document.getElementById('fPlano').value = plan;
-  document.getElementById('fSubject').value = 'Nova avaliação EliteFit — ' +
-    (plan==='treino'?'Personal Coach':plan==='combo'?'Combo Elite':'Nutri Sport');
-
-  const notices = {
-    treino: 'Você selecionou <strong>Personal Coach</strong> — anamnese de treino com FBueno',
-    combo:  'Você selecionou <strong>Combo Elite</strong> — anamnese completa: treino + nutrição',
-    nutri:  'Você selecionou <strong>Nutri Sport</strong> — anamnese nutricional com Isabel Peixinho'
-  };
-  document.getElementById('fn').innerHTML = notices[plan];
-  document.getElementById('fn').classList.add('show');
-
-  steps = plan==='treino' ? [...BASE,...TREINO] : plan==='nutri' ? [...BASE,...NUTRI] : [...BASE,...TREINO,...NUTRI];
-  cur = 0;
-
-  const bar = document.getElementById('stBar');
-  bar.style.display = 'flex';
-  bar.innerHTML = steps.map((s,i) => `<div class="step ${i===0?'active':''}" id="si${i}">${s.title}</div>`).join('');
-
-  document.getElementById('fBody').innerHTML = steps.map((s,i) =>
-    `<div class="fsec ${i===0?'active':''}" id="fs${i}">${s.fields}</div>`
-  ).join('');
-
-  document.getElementById('fnav').style.display = 'flex';
+let steps=[],cur=0;
+function selectPlan(plan){
+  ['treino','combo','nutri'].forEach(p=>document.getElementById('ps-'+p).classList.toggle('sel',p===plan));
+  document.getElementById('fPlano').value=plan;
+  document.getElementById('fSubject').value='Nova avaliação EliteFit — '+(plan==='treino'?'Personal Coach':plan==='combo'?'Combo Elite':'Nutri Sport');
+  const notices={treino:'Você selecionou <strong>Personal Coach</strong> — anamnese de treino com FBueno',combo:'Você selecionou <strong>Combo Elite</strong> — anamnese completa: treino + nutrição',nutri:'Você selecionou <strong>Nutri Sport</strong> — anamnese nutricional com Isabel Peixinho'};
+  document.getElementById('fn').innerHTML=notices[plan];document.getElementById('fn').classList.add('show');
+  steps=plan==='treino'?[...BASE,...TREINO]:plan==='nutri'?[...BASE,...NUTRI]:[...BASE,...TREINO,...NUTRI];
+  cur=0;
+  const bar=document.getElementById('stBar');bar.style.display='flex';
+  bar.innerHTML=steps.map((s,i)=>`<div class="step ${i===0?'active':''}" id="si${i}">${s.title}</div>`).join('');
+  document.getElementById('fBody').innerHTML=steps.map((s,i)=>`<div class="fsec ${i===0?'active':''}" id="fs${i}">${s.fields}</div>`).join('');
+  document.getElementById('fnav').style.display='flex';
   updateNav();
   document.getElementById('avaliacao').scrollIntoView({behavior:'smooth'});
 }
-
-function updateNav() {
-  document.getElementById('prevBtn').style.visibility = cur === 0 ? 'hidden' : 'visible';
-  document.getElementById('prog').textContent = `Passo ${cur+1} de ${steps.length}`;
-  const nb = document.getElementById('nextBtn');
-  nb.disabled = false;
-  if (cur === steps.length - 1) {
-    nb.textContent = 'Enviar avaliação ✓';
-    nb.onclick = submitForm;
-  } else {
-    nb.textContent = 'Próximo →';
-    nb.onclick = () => go(1);
-  }
+function updateNav(){
+  document.getElementById('prevBtn').style.visibility=cur===0?'hidden':'visible';
+  document.getElementById('prog').textContent=`Passo ${cur+1} de ${steps.length}`;
+  const nb=document.getElementById('nextBtn');nb.disabled=false;
+  if(cur===steps.length-1){nb.textContent='Enviar avaliação ✓';nb.onclick=submitForm;}
+  else{nb.textContent='Próximo →';nb.onclick=()=>go(1);}
 }
-
-function go(d) {
+function go(d){
   document.getElementById('fs'+cur).classList.remove('active');
   document.getElementById('si'+cur).classList.remove('active');
-  if (d > 0) document.getElementById('si'+cur).classList.add('done');
+  if(d>0)document.getElementById('si'+cur).classList.add('done');
   else document.getElementById('si'+cur).classList.remove('done');
-  cur = Math.min(Math.max(cur + d, 0), steps.length - 1);
+  cur=Math.min(Math.max(cur+d,0),steps.length-1);
   document.getElementById('fs'+cur).classList.add('active');
   document.getElementById('si'+cur).classList.add('active');
   document.getElementById('si'+cur).classList.remove('done');
   updateNav();
   document.getElementById('avaliacao').scrollIntoView({behavior:'smooth'});
 }
-
-function submitForm() {
-  const nb = document.getElementById('nextBtn');
-  const form = document.getElementById('mainForm');
-  nb.textContent = 'Enviando...';
-  nb.disabled = true;
-
-  const data = new FormData(form);
-
-  fetch(form.action, {
-    method: 'POST',
-    body: data,
-    headers: { 'Accept': 'application/json' }
-  }).then(r => {
-    if (r.ok) {
-      document.getElementById('fnav').style.display = 'none';
-      document.getElementById('stBar').style.display = 'none';
-      document.getElementById('fBody').style.display = 'none';
-      document.getElementById('fn').style.display = 'none';
+function submitForm(){
+  const nb=document.getElementById('nextBtn');
+  nb.textContent='Enviando...';nb.disabled=true;
+  fetch(document.getElementById('mainForm').action,{method:'POST',body:new FormData(document.getElementById('mainForm')),headers:{'Accept':'application/json'}})
+  .then(r=>{
+    if(r.ok){
+      document.getElementById('fnav').style.display='none';
+      document.getElementById('stBar').style.display='none';
+      document.getElementById('fBody').style.display='none';
+      document.getElementById('fn').style.display='none';
       document.getElementById('successMsg').classList.add('show');
-      // Abre WhatsApp
-      const msg = encodeURIComponent('Olá! Acabei de preencher a avaliação no site EliteFit e quero começar! 💪');
-      setTimeout(() => window.open('https://wa.me/5519998939057?text='+msg, '_blank'), 1500);
-    } else {
-      nb.textContent = 'Erro — tente novamente';
-      nb.disabled = false;
-    }
-  }).catch(() => {
-    nb.textContent = 'Erro — tente novamente';
-    nb.disabled = false;
-  });
+      const msg=encodeURIComponent('Olá! Acabei de preencher a avaliação no site EliteFit e quero começar! 💪');
+      setTimeout(()=>window.open('https://wa.me/5519998939057?text='+msg,'_blank'),1500);
+    }else{nb.textContent='Erro — tente novamente';nb.disabled=false;}
+  }).catch(()=>{nb.textContent='Erro — tente novamente';nb.disabled=false;});
 }
 </script>
 </body>
